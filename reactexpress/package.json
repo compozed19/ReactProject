@@ -5,17 +5,21 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-   "server": "node-env-run server --exec nodemon | pino-colada",
-   "dev": "run-p server start"
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "dev": "run-p server start"
   },
   "proxy": "http://localhost:3001",
+  "setupFiles": [
+  "reactexpress/src/setupTests.js"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -32,7 +36,11 @@
     ]
   },
   "devDependencies": {
+    "babel-jest": "^24.8.0",
     "body-parser": "^1.19.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
     "express": "^4.17.1",
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^3.0.2",

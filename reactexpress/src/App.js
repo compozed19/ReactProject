@@ -14,6 +14,7 @@ class App extends Component {
   }
 
   handleChange(event) {
+    console.log("inside handleChange event is----",event.target.value);
     this.setState({ name: event.target.value });
   }
 
@@ -26,31 +27,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <form onSubmit={this.handleSubmit}>
+          <form id = "form" onClick={this.handleSubmit}>
             <label htmlFor="name">Enter your name: </label>
             <input
-              id="name"
+              id="inputField"
               type="text"
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <button type="submit">Submit</button>
+            <button id="btn" type="submit">Submit</button>
           </form>
-          <p>{this.state.greeting}</p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <p id="pTag">{this.state.greeting}</p>
       </div>
     );
   }
