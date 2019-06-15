@@ -5,8 +5,10 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,7 +20,7 @@
   },
   "proxy": "http://localhost:3001",
   "setupFiles": [
-  "reactexpress/src/setupTests.js"
+    "reactexpress/src/setupTests.js"
   ],
   "eslintConfig": {
     "extends": "react-app"

@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter';
+import store from './store/';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,9 @@ class App extends Component {
             <button id="btn" type="submit">Submit</button>
           </form>
           <p id="pTag">{this.state.greeting}</p>
+          <div>
+            <Counter store={store}/>
+          </div>
       </div>
     );
   }
