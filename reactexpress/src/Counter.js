@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from  'react-redux';
-function Counter(props){
+ export const Counter =(props) =>{
+  console.log("props are ----",props);
   return(
     <div>
-     <h1>I am a counter!</h1>
-     <p>Count : {props.count}</p>
-     <button onClick={props.onIncrementClick}>Increment</button>
+     <h1 id="h1">I am a counter!</h1>
+     <p id="p">Count : {props.count}</p>
+     <button id="button" onClick={props.onIncrementClick}>Increment</button>
     </div>
   )}
   function mapStateToProps(state){

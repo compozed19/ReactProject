@@ -15,15 +15,18 @@ class App extends Component {
   }
 
   handleChange(event) {
-    console.log("inside handleChange event is----",event.target.value);
+    // console.log("inside handleChange event is----",event.target.value);
     this.setState({ name: event.target.value });
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
-      .then(response => response.json())
-      .then(state => this.setState(state));
+    // event.preventDefault();
+    console.log("handle submit is----",event);
+   return fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
+      .then(data => {
+        let res={'results' :JSON.stringify(data),
+      'json' : () => {return data;}}
+      }).then(state => this.setState(state));
   }
   render() {
     return (

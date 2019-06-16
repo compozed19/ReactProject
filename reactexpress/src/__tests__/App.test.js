@@ -4,21 +4,24 @@ import ReactDOM from 'react-dom';
 import App from '../App';
 import {shallow, mount } from 'enzyme';
 
-describe("home page rendering", () => {
+let tree;
+
+beforeEach(()=>{
+  tree = shallow(<App />);
   const event = { preventDefault: () => {} };
-  beforeEach(()=>{
-    jest.spyOn(event,'preventDefault')
-  });
+  jest.spyOn(event,'preventDefault')
+});
+
+describe("home page rendering", () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 
-it.only('onclick of submit button, it should display the name', () => {
-    const tree = shallow(<App/>);
+it('onclick of input field, it should enter the name', () => {
+    // const tree = shallow(<App/>);
     const spy = jest.spyOn(tree.instance(),'handleChange');
-
     const input = tree.find('#inputField');
     const event = {
       target : {name : 'name',value:'the-value'}
@@ -30,4 +33,20 @@ it.only('onclick of submit button, it should display the name', () => {
      expect(spy).toHaveBeenCalledWith(event);
      expect(tree.state().name).toEqual("the-value");
 })
+
+it.only('onclick of form should display data on screen',async () => {
+     global.fetch = jest.fn().mockImplementation(() => Promise.resolve({name: 'name', value: 'Hello- World'}));
+      // Promise.resolve({sgreeting: `Hello- World`}));
+     const spy = jest.spyOn(tree.instance(),'handleSubmit');
+     const form = tree.find('#form');
+     const event = {
+       target : {name : 'name',value:'the-value'}
+     };
+     form.simulate('click',event);
+     await tree.instance().handleSubmit(event).then(response => {
+        expect(response.name).toBe("skjgfjsdfj");
+     });
+      console.log("response is----",response);
+      expect(spy).toHaveBeenCalledTimes(1);
+  })
 })
