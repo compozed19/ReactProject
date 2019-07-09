@@ -10,6 +10,7 @@ import {onIncrementClick} from './actions.js';
      <h1 id="h1">I am a counter!</h1>
      <p id="p">Count : {props.count}</p>
      <button id="button" onClick={() => props.onIncrementClick(props.count)}>Increment</button>
+     <input id="name" type="text"/>
     </div>
   )}
   function mapStateToProps(state){
