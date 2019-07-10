@@ -32,14 +32,15 @@ it('should show the name enter name in name field', () => {
   const initialState = {
     name :'Hi'
   }
-  const onFocusName = jest.fn();
+  const onChangeName = jest.fn();
 
-  const tree = shallow(<Counter.WrappedComponent name={initialState.name} onFocusName = {onFocusName} />);
+  const tree = shallow(<Counter.WrappedComponent name={initialState.name} onChangeName = {onChangeName} />);
 
   expect(tree).toBeDefined();
 
-  tree.find('#name').simulate('change');
-  expect(onFocusName).toBeCalledTimes(1);
-  expect(onFocusName).toBeCalledWith(initialState.name);
+const event = {target : {value : 'the-value'}}
+  tree.find('#name').simulate('change', event);
+  expect(onChangeName).toBeCalledTimes(1);
+  expect(onChangeName).toBeCalledWith(event.target.value);
  })
 });

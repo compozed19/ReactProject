@@ -26,7 +26,6 @@ class functionPro extends Component{
      return(<div><h1>RP ALC DATA </h1></div>);
    }
   checkADGroups(groups){
-    console.log('inside function--------->>>>>',groups);
     if(groups.includes('tana_users')){
       return this.showRPData();
     } else{
@@ -44,7 +43,7 @@ class functionPro extends Component{
        {this.state.role !='' ? this.checkADGroups(this.state.adGroups) : this.showRPALCData()}
 
        <div>
-        <button id="myBtn" onClick={this.clickMe()}>Click Me!</button>
+        <button id="myBtn" onClick={this.clickMe}>Click Me!</button>
        </div>
       </div>
 

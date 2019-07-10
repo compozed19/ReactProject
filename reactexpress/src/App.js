@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import Counter from './Counter';
 import store from './store/';
+import Form from './Form';
 
 class App extends Component {
   constructor(props) {
@@ -20,9 +21,7 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault();
-    console.log("handle submit is----",event);
-   return fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
+     return fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
       .then(data => {
         let res={'results' :JSON.stringify(data),
       'json' : () => {return data;}}
@@ -44,6 +43,9 @@ class App extends Component {
           <p id="pTag">{this.state.greeting}</p>
           <div>
             <Counter store={store}/>
+          </div>
+          <div>
+          <Form store={store} />
           </div>
       </div>
     );

@@ -9,13 +9,13 @@ export const onIncrementClick = (current) => {
   }
 }
 
-export const onFocusName =(current) => {
+export const onChangeName =(current) => {
+  let data = current;
   return dispatch => {
     const payload = {
       type : 'NAME',
-      name : current
+      nameInfo : data
     };
-    console.log("updated action is--",payload)
     dispatch(payload);
   }
 }
