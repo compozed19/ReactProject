@@ -8,3 +8,14 @@ export const onIncrementClick = (current) => {
     dispatch(payload);
   }
 }
+
+export const onFocusName =(current) => {
+  return dispatch => {
+    const payload = {
+      type : 'NAME',
+      name : current
+    };
+    console.log("updated action is--",payload)
+    dispatch(payload);
+  }
+}

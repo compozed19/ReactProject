@@ -26,4 +26,20 @@ describe('Counter component', () => {
      // const spy = jest.spyOn(tree.)
      // expect(tree.type()).to.equal('div');
 })
+
+it('should show the name enter name in name field', () => {
+
+  const initialState = {
+    name :'Hi'
+  }
+  const onFocusName = jest.fn();
+
+  const tree = shallow(<Counter.WrappedComponent name={initialState.name} onFocusName = {onFocusName} />);
+
+  expect(tree).toBeDefined();
+
+  tree.find('#name').simulate('change');
+  expect(onFocusName).toBeCalledTimes(1);
+  expect(onFocusName).toBeCalledWith(initialState.name);
+ })
 });
