@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-import {connect} from 'react-redux';
+import {connect, Provider } from 'react-redux';
 import {changeName} from './actions/formActions.js';
 import {bindActionCreators} from 'redux';
+import store from './store/index.js';
+
 
 
 class Form extends Component{
@@ -10,11 +12,14 @@ class Form extends Component{
   }
   render(){
     return(
-      <div>
-      <form>
-       <p> Name : </p>  <input type="text" onChange={(e) => this.props.changeName(e.target.value)} />
-      </form>
-      </div>
+       <Provider store={store}>
+        <div>
+         <form>
+          <p> Name : </p>  <input type="text" onChange={(e) => changeName(e.target.value)} />
+
+        </form>
+        </div>
+      </Provider>
     )}
 }
 
@@ -27,4 +32,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({changeName},dispatch);
 }
 
-export default connect(mapStateToProps,null)(Form);
+export default connect(mapStateToProps,mapStateToProps)(Form);

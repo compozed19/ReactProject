@@ -7,6 +7,7 @@ const initialState = {
   userName : ''
 };
 const reducer = (state = initialState, action) =>{
+  console.log("userName is-----",action.userName);
   switch(action.type){
     case 'INCREMENT' :
          return Object.assign({}, state, {count : action.count});
@@ -19,5 +20,6 @@ const reducer = (state = initialState, action) =>{
   }
 }
 const store = createStore(reducer, applyMiddleware(thunk));
+console.log("store is------",store.getState());
 
 export default store;
